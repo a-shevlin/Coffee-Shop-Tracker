@@ -8,7 +8,7 @@ function CoffeeList(props) {
     return (
       <React.Fragment>
         <div>
-          {props.coffeeList.map((coffee) =>
+          {props.coffeeList?.map((coffee) =>
           <Coffee 
           whenCoffeeClicked = { props.onCoffeeSelection }
           name={coffee.name}
