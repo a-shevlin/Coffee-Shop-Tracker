@@ -70,10 +70,13 @@ class CoffeeControl extends React.Component {
     this.setState({inventory:restock})
   }
 
-  handleRemoveClick = () => {
-    console.log(this.state.inventory);
-    const sell = this.state.inventory - 1;
-    this.setState({inventory:sell})
+  handleSellClick = (id) => {
+    if(this.state.inventory > 0) {
+      const sell = this.state.inventory - 1;
+      this.setState({inventory:sell});
+    } else {
+      //return inventory as is
+    }
   }
 
   render() {
@@ -84,7 +87,7 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <EditCoffeeForm coffee = {this.state.selectedCoffee} onEditCoffee = {this.handleEditingCoffeeInList} />
       buttonText = "Return to Coffee List"; 
     } else if (this.state.selectedCoffee != null) {
-      currentlyVisibleState = <CoffeeDetail coffee = {this.state.selectedCoffee} onClickingDelete = {this.handleDeletingCoffee} onClickingEdit={this.handleEditClick} counter={this.state.inventory} onRestockClick={this.handleRestockClick} />
+      currentlyVisibleState = <CoffeeDetail coffee = {this.state.selectedCoffee} onClickingDelete = {this.handleDeletingCoffee} onClickingEdit={this.handleEditClick} counter={this.state.inventory} onRestockClick={this.handleRestockClick} onSellClick={this.handleSellClick}/>
       buttonText= "Return to Coffee List" 
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewCoffeeForm onNewCoffeeCreation={this.handleAddingNewCoffeeToList} />

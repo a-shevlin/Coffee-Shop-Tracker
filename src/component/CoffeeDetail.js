@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function CoffeeDetail(props){
-  const { coffee, onClickingDelete, counter } = props;
+  const { coffee, onClickingDelete, counter, onSellClick } = props;
 
   return (
     <React.Fragment>
@@ -10,9 +10,16 @@ function CoffeeDetail(props){
       <h3>{coffee.name} - {coffee.origin}</h3>
       <p><em>{coffee.price}</em></p>
       <p><em>{coffee.steep}</em></p>
-      <p><em>{counter}</em></p>
+      {counter === 0 ? (
+        <p><em>{counter}lbs of beans  </em><strong>SOLD OUT</strong></p>
+      ) : (
+        <p><em>{counter}lbs of beans</em></p>
+      )};
+      
+      
+    
       <button onClick={props.onRestockClick}>Restock Coffee</button>
-      <button onClick={props.onSellClick}>Sell Coffee</button>
+      <button onClick={()=> onSellClick(coffee.id) } disabled={counter === 0}>Sell Coffee</button>
       <button onClick={props.onClickingEdit}>Edit Coffee</button>
       <button onClick={()=> onClickingDelete(coffee.id) }>Delete Coffee</button>
       <hr/>
