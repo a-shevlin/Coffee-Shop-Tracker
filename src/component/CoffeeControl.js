@@ -67,7 +67,7 @@ class CoffeeControl extends React.Component {
 
   handleRestockClick = () => {
     const restock = this.state.inventory + 130;
-    this.setState({inventory:restock})
+    this.setState({inventory:restock});
   }
 
   handleSellClick = (id) => {

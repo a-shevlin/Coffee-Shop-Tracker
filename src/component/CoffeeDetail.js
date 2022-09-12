@@ -16,8 +16,6 @@ function CoffeeDetail(props){
         <p><em>{counter}lbs of beans</em></p>
       )};
       
-      
-    
       <button onClick={props.onRestockClick}>Restock Coffee</button>
       <button onClick={()=> onSellClick(coffee.id) } disabled={counter === 0}>Sell Coffee</button>
       <button onClick={props.onClickingEdit}>Edit Coffee</button>
