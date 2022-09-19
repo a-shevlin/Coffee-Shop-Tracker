@@ -8,7 +8,7 @@ import CoffeeControl from "./CoffeeControl";
 function App(){
   return ( 
     <React.Fragment>
-      <div class="container">
+      <div className="container">
         <Header />
         <CoffeeControl />
       </div>
