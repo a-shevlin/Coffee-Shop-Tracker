@@ -25,6 +25,7 @@ Coffee.propTypes = {
   origin: PropTypes.string,
   price: PropTypes.string,
   strength: PropTypes.string,
+  inventory: PropTypes.number,
   id: PropTypes.string,
   whenCoffeeClicked: PropTypes.func
 };

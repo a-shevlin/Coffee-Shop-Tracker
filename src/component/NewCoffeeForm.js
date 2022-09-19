@@ -21,6 +21,7 @@ function NewCoffeeForm(props){
       origin: event.target.origin.value, 
       price: event.target.price.value, 
       strength: event.target.strength.value,
+      inventory: 130,
       id: v4()
     });
   }

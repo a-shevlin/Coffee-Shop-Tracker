@@ -12,8 +12,7 @@ class CoffeeControl extends React.Component {
       formVisibleOnPage: false,
       mainCoffeeList: [],
       selectedCoffee: null,
-      editing: false,
-      inventory: 0
+      editing: false
     };
   }
 
@@ -66,16 +65,22 @@ class CoffeeControl extends React.Component {
   }
 
   handleRestockClick = () => {
-    const restock = this.state.inventory + 130;
-    this.setState({inventory:restock});
+    const currentCoffee = {...this.state.selectedCoffee}
+    const newInventory = currentCoffee.inventory + 130;
+    const updatedCoffee = {...currentCoffee, inventory: newInventory}
+    this.setState({
+      selectedCoffee: updatedCoffee,
+    })
   }
 
-  handleSellClick = (id) => {
-    if(this.state.inventory > 0) {
-      const sell = this.state.inventory - 1;
-      this.setState({inventory:sell});
-    } else {
-      //return inventory as is
+  handleSellClick = (amt) => {
+    const currentCoffee = {...this.state.selectedCoffee}
+    if ((currentCoffee.inventory-amt) >= 0) {
+      const newInventory = currentCoffee.inventory - amt;
+      const updatedCoffee = {...currentCoffee, inventory: newInventory}
+      this.setState({
+        selectedCoffee: updatedCoffee,
+      });
     }
   }
 
@@ -87,7 +92,7 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <EditCoffeeForm coffee = {this.state.selectedCoffee} onEditCoffee = {this.handleEditingCoffeeInList} />
       buttonText = "Return to Coffee List"; 
     } else if (this.state.selectedCoffee != null) {
-      currentlyVisibleState = <CoffeeDetail coffee = {this.state.selectedCoffee} onClickingDelete = {this.handleDeletingCoffee} onClickingEdit={this.handleEditClick} counter={this.state.inventory} onRestockClick={this.handleRestockClick} onSellClick={this.handleSellClick}/>
+      currentlyVisibleState = <CoffeeDetail coffee = {this.state.selectedCoffee} onClickingDelete = {this.handleDeletingCoffee} onClickingEdit={this.handleEditClick} onRestockClick={this.handleRestockClick} onSellClick={this.handleSellClick}/>
       buttonText= "Return to Coffee List" 
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewCoffeeForm onNewCoffeeCreation={this.handleAddingNewCoffeeToList} />
