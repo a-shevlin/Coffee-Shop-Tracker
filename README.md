@@ -25,9 +25,11 @@
 
 ## Description
 
-_This is a webpage written with JSX, styling using SASS, and scripted with Javascript. It allows a user to add or remove beans to each coffee's inventory. Click_ [here](https://drive.google.com/file/d/1vzhFVmH1qVtwk6UUBJ9bEC67N8B3wS0k/view?usp=sharing) _to view the component diagram._
+_This is a webpage written with JSX, styling using SASS, and scripted with Javascript. It allows a user to add or remove beans to each coffee's inventory._
 
+## Component Diagram
 
+![image](/src/coffeeInventory%20(1).png)
 ## Technology Requirements
 
 * Download and install **[Node.js](https://nodejs.org/en/)**  
